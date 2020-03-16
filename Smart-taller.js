@@ -19,7 +19,7 @@ var auto3 = {
     danios : ["Ruedas","Frenos","Bugias"]
 }
 // Modelacion en el sistema de los mecanicos (3)        reparaciones >> Tren Delantero, Frenos, Bugias, Ruedas, Vidrio Trasero, Tablero, Aire Acondicionado, 
-//                                                                      Vidrio trasero, Pintura y Chapa, Cableado
+//                                                                      Vidrio trasero, Pintura y Chapa, Cableado (10)
 var mecanico1 = {
     nombre : "Uriel",
     legajo : "1",
@@ -100,7 +100,7 @@ function repararAuto(auto,mecanico){
 // acumulativa, despues de probar varios metodos de array e incluso usando .join algunos de strings me quede con el destructuring porque en ultima instancia podria hacer que el
 // tamaño del array usado en el destructuring [alfa, beta, charlie, delta, epsilon] dependa del .length del array de danios y reparaciones comunes. Si bien no se como hacer eso
 // suena logica que se pueda crear algun tipo de array aleatorio con tan solo poner su length.  
-    console.log(daniosQueSePuedenArreglar)
+    
     let [alfa, beta, charlie, delta, epsilon] = daniosQueSePuedenArreglar
         postReparaciones = danios.filter(function(danio){
             return danio != alfa && danio != beta && danio != charlie && danio != delta && danio != epsilon
@@ -108,6 +108,13 @@ function repararAuto(auto,mecanico){
     
     auto.danios = postReparaciones
 
+}
+function repararAutoPorMecanicos(auto,listaDeMecanicos){
+    for (var k = 0; k < listaDeMecanicos.length; k++){
+        repararAuto(auto,listaDeMecanicos[k])
+        
+    }
+    
 }
 
 
