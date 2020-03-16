@@ -36,3 +36,40 @@ var mecanico3 = {
     legajo : "3",
     reparaciones : ["Vidrio trasero", "Pintura y Chapa", "Cableado"]
 }
+
+
+// Agrupo los individuales en arrays colectivos para su mas facil manipulacion
+
+
+var autos = [auto1, auto2, auto3]
+var mecanicos = [mecanico1, mecanico2, mecanico3]
+
+
+// Funcion para listar los legajos de los mecanicos, podria haberlo hecho con una arrow function pero opte por la flexibilidad de el for
+
+
+function listarLegajos (arrayDeMecanicos){
+    let legajosCompleto = []
+    for (var i = 0; i < arrayDeMecanicos.length; i++){
+        let legajoIndividual = arrayDeMecanicos[i].legajo
+        legajosCompleto.push(legajoIndividual)
+    }
+    
+    return legajosCompleto
+}
+
+
+// Funcion para listar las patentes de los autos, elegi for por sobre arrow function por la misma razon que antes
+
+
+function listarPatentes (arrayDeAutos){
+    let patentesCompleto = []
+    for (var i = 0; i < arrayDeAutos.length; i++){
+        let patenteIndividual = arrayDeAutos[i].patente
+        patentesCompleto.push(patenteIndividual)  
+    }
+    
+    return patentesCompleto
+}
+// Ambas funciones retornan un array conteniendo ya sea legajos o patentes
+
