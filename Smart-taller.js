@@ -73,3 +73,41 @@ function listarPatentes (arrayDeAutos){
 }
 // Ambas funciones retornan un array conteniendo ya sea legajos o patentes
 
+
+// Funcion que une a un auto y un mecanico y repara lo que uno tenga daniada y el otro pueda reparar
+function repararAuto(auto,mecanico){
+
+
+    let danios = auto.danios
+    let reparaciones = mecanico.reparaciones
+    let daniosQueSePuedenArreglar = []
+
+// Aqui lo que ocurre es que itero dos veces, como danios y reparciones son arrays de 3 objetos, se itera un total de 9 veces, cuando en una de esas 9 iteraciones se alinean 
+// los resultados de los danios del auto y las reparaciones del mecanico se activa el if que los agrupa el resultado comun en un array
+    for (var i = 0; i < reparaciones.length; i++){
+        for (var j = 0; j < danios.length; j++){
+            if (reparaciones[i]===danios[j]){
+                daniosQueSePuedenArreglar.push(reparaciones[i])  
+            }
+            
+        }
+        
+    }
+// Aca hice un destructuring porque cualquier uso de un ciclo hacia que pudiera sacar una pero no las dos reparaciones pendientes, excedi el numero de variables en el 
+// destructuring tanto como en el filter ya que no afecta el resultado (no da error), tengo la limitacion de que no pueda ser introducido un auto que tenga mas 
+// de 5 danios junto con un mecanico que no sepa arregalar ninguna de las 5. Siempre puedo aumentar mas este numero aunque de todas maneras falla en ser perfectamente generica.
+// MENSAJE AL CORRECTOR : probe filter pero no podia filtrar al mismo tiempo todo sin dejar de ser generico, usando un ciclo podia sacar uno en cada iteracion pero no de forma
+// acumulativa, despues de probar varios metodos de array e incluso usando .join algunos de strings me quede con el destructuring porque en ultima instancia podria hacer que el
+// tamaño del array usado en el destructuring [alfa, beta, charlie, delta, epsilon] dependa del .length del array de danios y reparaciones comunes. Si bien no se como hacer eso
+// suena logica que se pueda crear algun tipo de array aleatorio con tan solo poner su length.  
+    console.log(daniosQueSePuedenArreglar)
+    let [alfa, beta, charlie, delta, epsilon] = daniosQueSePuedenArreglar
+        postReparaciones = danios.filter(function(danio){
+            return danio != alfa && danio != beta && danio != charlie && danio != delta && danio != epsilon
+        })
+    
+    auto.danios = postReparaciones
+
+}
+
+
