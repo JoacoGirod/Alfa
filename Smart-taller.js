@@ -116,5 +116,13 @@ function repararAutoPorMecanicos(auto,listaDeMecanicos){
     }
     
 }
+function repararTodosLosAutos (listaDeAutos,listaDeMecanicos){
+    for (var l = 0; l < listaDeAutos.length; l++) { 
+        repararAutoPorMecanicos(listaDeAutos[l],listaDeMecanicos)
+
+    }
+}
+
+
 
 
